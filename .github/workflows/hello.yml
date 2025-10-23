@@ -1,0 +1,48 @@
+name: Mi primer workflow
+
+on: [push]
+
+jobs:
+  build:
+    name: 🏗️ Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Clonando repositorio
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Configurando Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 📦 Instalando dependencias
+        run: npm ci
+
+      - name: 🧱 Ejecutando build
+        run: npm run build
+
+  compilar:
+    name: 🔧 Compilar
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🔧 Compilando app..."
+
+  test:
+    name: 🧪 Test
+    runs-on: ubuntu-latest
+    needs: compilar
+    steps:
+      - run: echo "🧪 Ejecutando pruebas..."
+
+  deploy:
+    name: 🚀 Deploy
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - run: echo "🚀 Deploy listo!"
+      - name: If develop branch
+        if: github.ref == 'refs/heads/develop'
+        run: echo "This is the develop branch!"
+      - name: if master branch
+        if: github.ref == 'refs/heads/main'
+        run: echo $(pwd)
