@@ -15,7 +15,7 @@ jobs:
 
   compilar:
     runs-on: ubuntu-latest
-    needs: build
+    
     steps:
       - run: echo "🔧 Compilando app..."
 
