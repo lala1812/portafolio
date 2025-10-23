@@ -8,4 +8,3 @@ jobs:
     steps:
       - name: Imprimir mensaje
         run: echo "Hola, GitHub Actions está vivo! 🚀"
-        name: crear archivo con la version 
