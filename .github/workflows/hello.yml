@@ -6,27 +6,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-      - run: npm ci
-      - run: npm run build
+    name: imprimir mensaje
+    run: echo "hola mundo cdsif"
 
-  compilar:
-    runs-on: ubuntu-latest
-    
-    steps:
-      - run: echo "🔧 Compilando app..."
-
-  test:
-    runs-on: ubuntu-latest
-    needs: compilar
-    steps:
-      - run: echo "🧪 Ejecutando pruebas..."
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: test
-    steps:
-      - run: echo "🚀 Deploy listo!"
+name: If develop branch
+if: github.ref == 'refs/heads/develop'
+run: echo "This is the develop branch!"
