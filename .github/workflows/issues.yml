@@ -1,0 +1,13 @@
+name: Responder a Issues ✨
+on:
+  issues:
+    types: [opened]
+jobs:
+  respond:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comentar en el issue
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.issue.number }}
+          body: "👋 ¡Gracias por tu aporte! El equipo revisará tu issue pronto."
