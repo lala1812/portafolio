@@ -46,11 +46,3 @@ jobs:
       - name: if main branch
         if: github.ref == 'refs/heads/main'
         run: echo $(pwd)
-      -  name: Revisión de PR
-         on: [pull_request]
-    jobs:
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - run: npx prettier --check 
